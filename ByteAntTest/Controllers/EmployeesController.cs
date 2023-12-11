@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ByteAntTest.Data;
 using ByteAntTestTask.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ByteAntTest.Controllers
 {
@@ -158,8 +159,9 @@ namespace ByteAntTest.Controllers
 
         public async Task<IActionResult> Search(string name)
         {
+            if (name.IsNullOrEmpty()) return PartialView("SearchPartial", await _context.Employee.ToListAsync());
             return _context.Employee != null ?
-                        View(await _context.Employee.Where(employee => EF.Functions.FreeText(employee.Name, name)).ToListAsync()) :
+                        PartialView("SearchPartial", _context.Employee.Where(employee => employee.Name.Contains(name)).ToList()) :
                         Problem("Entity set 'ByteAntTestContext.Employee'  is null.");
         }
 

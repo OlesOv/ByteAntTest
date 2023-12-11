@@ -182,8 +182,10 @@ namespace ByteAntTest.Controllers
             var positions = _context.Position
                 .Include(p => p.ReportsTo).ThenInclude(p => p.Employee)
                 .Include(p => p.Role)
-                .ToList().Where(p => p.ReportsTo == null);
-            return View("PositionTreeView", positions);
+                .Include(p => p.Subordinates).ThenInclude(p => p.Employee)
+                //.Where(pos => pos.ReportsTo == null)
+                .ToList();
+            return View("PositionTree", positions.Where(pos => pos.ReportsToID == null));
         }
 
         private bool PositionExists(Guid id)

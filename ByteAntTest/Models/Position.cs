@@ -11,8 +11,8 @@ namespace ByteAntTestTask.Models
         public Guid? EmployeeID { get; set; }
         public Guid RoleID { get; set; }
         public Guid? ReportsToID { get; set; }
-        public Position ReportsTo { get; set; }
-        public Employee Employee { get; set; }
+        public Position? ReportsTo { get; set; }
+        public Employee? Employee { get; set; }
         public Role Role { get; set; }
         public List<Position> Subordinates { get; set; }
     }

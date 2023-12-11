@@ -20,14 +20,14 @@
                             Employee
                         </td>
                         <td>
-                            @position.Employee.Name
+                            @(position.Employee != null ? @position.Employee.Name : "VACANT")
                         </td>
                     </tr>
                 </tbody>
             </table>
             @if (position.Subordinates != null && position.Subordinates.Any())
             {
-                await Html.RenderPartialAsync("TreePartial", position.Subordinates);
+                await Html.RenderPartialAsync("PositionTreePartial", position.Subordinates);
             }
         </li>
     }

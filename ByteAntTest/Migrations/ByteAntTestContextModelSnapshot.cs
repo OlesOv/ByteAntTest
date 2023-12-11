@@ -37,7 +37,7 @@ namespace ByteAntTest.Migrations
 
                     b.HasKey("EmployeeID");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employee", (string)null);
                 });
 
             modelBuilder.Entity("ByteAntTestTask.Models.Position", b =>
@@ -63,7 +63,7 @@ namespace ByteAntTest.Migrations
 
                     b.HasIndex("RoleID");
 
-                    b.ToTable("Position");
+                    b.ToTable("Position", (string)null);
                 });
 
             modelBuilder.Entity("ByteAntTestTask.Models.Role", b =>
@@ -78,7 +78,7 @@ namespace ByteAntTest.Migrations
 
                     b.HasKey("RoleID");
 
-                    b.ToTable("Role");
+                    b.ToTable("Role", (string)null);
                 });
 
             modelBuilder.Entity("ByteAntTestTask.Models.Position", b =>
