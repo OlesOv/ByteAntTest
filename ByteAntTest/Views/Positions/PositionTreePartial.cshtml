@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ByteAntTestTask.Models.Position>
+
+
+<ul>
+    @foreach (var position in Model)
+    {
+        <li>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            Role
+                        </td>
+                        <td>
+                            @position.Role.Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Employee
+                        </td>
+                        <td>
+                            @position.Employee.Name
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            @if (position.Subordinates != null && position.Subordinates.Any())
+            {
+                await Html.RenderPartialAsync("TreePartial", position.Subordinates);
+            }
+        </li>
+    }
+</ul>

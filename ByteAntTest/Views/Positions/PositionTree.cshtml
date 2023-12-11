@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ByteAntTestTask.Models.Position>
+
+@{
+    ViewData["Title"] = "PositionTree";
+}
+
+<h1>Position Hierarchy Tree</h1>
+
+@{
+    await Html.RenderPartialAsync("PositionTreePartial", Model);
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ByteAntTest.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ByteAntTestContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ByteAntTestContext") ?? throw new InvalidOperationException("Connection string 'ByteAntTestContext' not found.")));
 
 var app = builder.Build();
 
